@@ -18,10 +18,12 @@
     "cloudfront:setup": "sls deploy",
     "cloudfront:domainInfo": "sls domainInfo",
     "cloudfront:invalidateCache": "sls invalidateCloudFrontCache",
-    "cloudfront:build:deploy": "npm run client:build:deploy && npm run cloudfront:invalidateCache",
-    "cloudfront:build:deploy:nc": "npm run client:build:deploy:nc && npm run cloudfront:invalidateCache",
-    "cloudfront:update:build:deploy": "npm run cloudfront:setup && npm run cloudfront:build:deploy",
-    "cloudfront:update:build:deploy:nc": "npm run cloudfront:setup && npm run cloudfront:build:deploy:nc",
+    "cloudfront:build:deploy": "npm run cloudfront:setup && npm run client:build:deploy",
+    "cloudfront:build:deploy:nc": "npm run cloudfront:setup && npm run client:build:deploy:nc",
+    "cloudfront:build:deploy:invalidateCache": "npm run client:build:deploy && npm run cloudfront:invalidateCache",
+    "cloudfront:build:deploy:invalidateCache:nc": "npm run client:build:deploy:nc && npm run cloudfront:invalidateCache",
+    "cloudfront:update:build:deploy:invalidateCache": "npm run cloudfront:setup && npm run cloudfront:build:deploy:invalidateCache",
+    "cloudfront:update:build:deploy:invalidateCache:nc": "npm run cloudfront:setup && npm run cloudfront:build:deploy:invalidateCache:nc",
     "serverless:remove": "sls remove"
   },
   "dependencies": {
