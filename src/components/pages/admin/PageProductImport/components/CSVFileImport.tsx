@@ -30,13 +30,27 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
       throw new Error("File is not selected");
     }
 
-    const response = await axios({
+    const authorizationToken = localStorage.getItem("authorization_token");
+    localStorage.removeItem("authorization_token");
+
+    const requestParams = {
       method: "GET",
       url,
       params: {
         name: encodeURIComponent(file.name),
       },
-    });
+    };
+
+    const response = await axios(
+      authorizationToken
+        ? {
+            ...requestParams,
+            headers: {
+              Authorization: `Basic ${authorizationToken}`,
+            },
+          }
+        : requestParams
+    );
 
     console.log("File to upload: ", file.name);
     console.log("Uploading to: ", response.data);
