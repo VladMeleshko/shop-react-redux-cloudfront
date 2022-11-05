@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -20,12 +21,17 @@ export default function CartItems({ items, isEditable }: CartItemsProps) {
   return (
     <>
       <List disablePadding>
-        {items.map((cartItem: CartItem) => (
+        {items.map((cartItem: any) => (
           <ListItem
             sx={{ padding: (theme) => theme.spacing(1, 0) }}
             key={cartItem.product.id}
           >
-            {isEditable && <AddProductToCart product={cartItem.product} />}
+            {isEditable && (
+              <AddProductToCart
+                product={cartItem.product}
+                count={cartItem.product.count}
+              />
+            )}
             <ListItemText
               primary={cartItem.product.title}
               secondary={cartItem.product.description}

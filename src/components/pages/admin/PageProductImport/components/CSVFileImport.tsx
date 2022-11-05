@@ -31,7 +31,6 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
     }
 
     const authorizationToken = localStorage.getItem("authorization_token");
-    localStorage.removeItem("authorization_token");
 
     const requestParams = {
       method: "GET",
