@@ -66,7 +66,7 @@ export default function PageCart() {
       comments: address.comment,
     };
 
-    axios.post(`${API_PATHS.cart}/profile/cart/checkout`, values, {
+    axios.post(`${API_PATHS.bff}/cart/checkout`, values, {
       headers: {
         Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
       },
