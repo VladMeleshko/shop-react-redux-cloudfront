@@ -24,8 +24,12 @@ export default function Products() {
             sx={{ height: "100%", display: "flex", flexDirection: "column" }}
           >
             <CardMedia
-              sx={{ pt: "56.25%" }}
-              image={`https://source.unsplash.com/random?sig=${index}`}
+              sx={{
+                pt: "100%",
+                width: "67%",
+                alignSelf: "center",
+              }}
+              image={product.image}
               title="Image title"
             />
             <CardContent sx={{ flexGrow: 1 }}>
