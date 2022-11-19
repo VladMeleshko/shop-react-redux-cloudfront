@@ -7,7 +7,7 @@ import { Cart, CartItem } from "~/models/CartItem";
 export function useCart() {
   return useQuery<Cart, AxiosError>("cart", async () => {
     const res = await axios.get<{ body: { cart: Cart } }>(
-      `${API_PATHS.cart}/profile/cart`,
+      `${API_PATHS.bff}/cart`,
       {
         headers: {
           Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
@@ -39,7 +39,7 @@ export function useUpsertCart() {
       count: values.count,
     };
 
-    return axios.put<CartItem[]>(`${API_PATHS.cart}/profile/cart`, sendValue, {
+    return axios.put<CartItem[]>(`${API_PATHS.bff}/cart`, sendValue, {
       headers: {
         Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
       },
